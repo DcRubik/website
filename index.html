@@ -464,45 +464,59 @@
 
         </div>
     </div>
-    <div class="card">
-        <h2 class="card-title" id="t-games-title">Ecosistemas de Desarrollo y Videojuegos</h2>
-        <p class="card-text" id="t-games-text">
-            Plataformas y entornos de juego donde he programado sistemas, modding y remakes independientes.
-        </p>
-        <div class="project-media">
-
-            <div class="media-box" onclick="openModal('minecraft-modal')">
-                <img src="public/images/minecraft.png" alt="Minecraft Development">
-                <div class="media-info">
-                    <strong>Minecraft (Spigot/Paper API)</strong>
-                    <span>2021 - Presente</span>
+    <div id="minecraft-modal" class="modal-overlay" onclick="closeModal('minecraft-modal')">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <button class="close-btn" onclick="closeModal('minecraft-modal')">&times;</button>
+            <div class="modal-body">
+                <h3>Minecraft Development</h3>
+                <p><strong>Periodo:</strong> 2021 - Presente</p>
+                <div style="text-align: center; margin: 15px 0;">
+                    <img src="public/images/minecraft.png" alt="Minecraft Dev" style="width: 100%; max-height: 250px; object-fit: cover; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);">
                 </div>
+                <p>Desarrollo de plugins avanzados utilizando la API de Spigot, Paper y BungeeCord/Velocity. Especializado en la creación de mecánicas personalizadas para minijuegos, optimización de paquetes de red y gestión de bases de datos de alto rendimiento (SQL/Redis) para redes con flujos estables de usuarios.</p>
             </div>
+        </div>
+    </div>
 
-            <div class="media-box" onclick="openModal('hytale-modal')">
-                <img src="public/images/hytale-dev.png" alt="Hytale Modding">
-                <div class="media-info">
-                    <strong>Hytale (Modding & Tools)</strong>
-                    <span>2024 - Presente</span>
+    <div id="hytale-modal" class="modal-overlay" onclick="closeModal('hytale-modal')">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <button class="close-btn" onclick="closeModal('hytale-modal')">&times;</button>
+            <div class="modal-body">
+                <h3>Hytale (Modding & Software)</h3>
+                <p><strong>Periodo:</strong> 2024 - Presente</p>
+                <div style="text-align: center; margin: 15px 0;">
+                    <img src="public/images/hytale.png" alt="Hytale Dev" style="width: 100%; max-height: 250px; object-fit: cover; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);">
                 </div>
+                <p>Investigación y desarrollo de herramientas preparatorias orientadas al esperado juego de Hypixel Studios. Creación de scripts, análisis de arquitecturas modulares en C# / Java y diseño de interfaces que agilicen la inyección de contenido personalizado y assets una vez la plataforma esté disponible.</p>
             </div>
+        </div>
+    </div>
 
-            <div class="media-box" onclick="openModal('fivem-modal')">
-                <img src="public/images/fivem.png" alt="GTA V FiveM">
-                <div class="media-info">
-                    <strong>GTA V (FiveM)</strong>
-                    <span>2023 - 2025</span>
+    <div id="fivem-modal" class="modal-overlay" onclick="closeModal('fivem-modal')">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <button class="close-btn" onclick="closeModal('fivem-modal')">&times;</button>
+            <div class="modal-body">
+                <h3>GTA V (FiveM Modding)</h3>
+                <p><strong>Periodo:</strong> 2023 - 2025</p>
+                <div style="text-align: center; margin: 15px 0;">
+                    <img src="public/images/fivem.png" alt="FiveM Dev" style="width: 100%; max-height: 250px; object-fit: cover; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);">
                 </div>
+                <p>Programación de scripts del lado del servidor y del cliente para servidores de Roleplay dedicados en la plataforma de FiveM. Desarrollo e integración de interfaces de usuario (NUI), optimización de recursos para evitar tirones (desincronización) y estructuración de bases de datos para inventarios persistentes.</p>
             </div>
+        </div>
+    </div>
 
-            <div class="media-box" onclick="openModal('raccoontale-modal')">
-                <img src="public/images/raccoontale.png" alt="RaccoonTale">
-                <div class="media-info">
-                    <strong>RaccoonTale (Undertale Remake)</strong>
-                    <span>2025 - 2026</span>
+    <div id="raccoontale-modal" class="modal-overlay" onclick="closeModal('raccoontale-modal')">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <button class="close-btn" onclick="closeModal('raccoontale-modal')">&times;</button>
+            <div class="modal-body">
+                <h3>RaccoonTale</h3>
+                <p><strong>Periodo:</strong> 2025 - 2026</p>
+                <div style="text-align: center; margin: 15px 0;">
+                    <img src="public/images/raccoontale.png" alt="RaccoonTale Dev" style="width: 100%; max-height: 250px; object-fit: cover; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);">
                 </div>
+                <p>Un remake/fangame independiente inspirado fuertemente en las mecánicas y la narrativa de Undertale. Programación completa del motor de combate basado en esquivar proyectiles en una caja (bullet-hell), gestión de diálogos dinámicos con eventos ramificados y diseño lógico de colisiones en 2D.</p>
             </div>
-
         </div>
     </div>
     <div class="bottom-grid">
