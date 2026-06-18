@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #111827;
+            background-image: url('/images/rubikhytale.png');
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
+            color: #f8fafc;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+        }
+
+        .main-container {
+            width: 100%;
+            max-width: 650px;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            position: relative;
+        }
+
+        .lang-selector-container {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+        }
+
+        .lang-dropdown {
+            background: rgba(30, 41, 59, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: #ffffff;
+            padding: 6px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            outline: none;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            transition: all 0.2s ease;
+        }
+
+        .lang-dropdown:hover {
+            background: rgba(30, 41, 59, 0.9);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .lang-dropdown option {
+            background: #1e293b;
+            color: #ffffff;
+        }
+
+        .profile-header {
+            text-align: center;
+            margin-bottom: 5px;
+        }
+
+        .profile-logo {
+            font-size: 2.5rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            color: #f1f5f9;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            margin: 0;
+        }
+
+        .profile-subtitle {
+            color: #cbd5e1;
+            margin-top: 5px;
+            font-size: 1rem;
+            text-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .welcome-box {
+            text-align: center;
+            color: #e2e8f0;
+            font-size: 1.05rem;
+            line-height: 1.6;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+        }
+
+        .age-highlight {
+            color: #ffffff;
+            font-weight: 700;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2px 8px;
+            border-radius: 6px;
+            font-family: monospace;
+        }
+
+        .card {
+            background: rgba(30, 41, 59, 0.45);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-top: 0;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #ffffff;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 8px;
+        }
+
+        .card-text {
+            color: #cbd5e1;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 16px;
+        }
+
+        .project-media {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-top: 15px;
+        }
+
+        .media-box {
+            background: rgba(15, 23, 42, 0.5);
+            border-radius: 12px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .media-box img {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            object-fit: cover;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .media-info {
+            padding: 12px;
+            text-align: center;
+        }
+
+        .media-info strong {
+            display: block;
+            font-size: 0.95rem;
+            color: #f1f5f9;
+        }
+
+        .media-info span {
+            font-size: 0.75rem;
+            color: #cbd5e1;
+            display: block;
+            margin-top: 4px;
+        }
+
+        .media-box:hover {
+            border-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .skills-section {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .skills-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .skills-group h4 {
+            margin: 0;
+            font-size: 0.85rem;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .tags-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tag {
+            background: rgba(255, 255, 255, 0.07);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            color: #f1f5f9;
+        }
+
+        .bottom-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        @media (max-width: 600px) {
+            .bottom-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .links-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .social-btn {
+            background: rgba(15, 23, 42, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 12px;
+            border-radius: 8px;
+            color: #e2e8f0;
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.2s ease;
+        }
+
+        .social-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .social-btn span {
+            font-size: 0.75rem;
+            color: #94a3b8;
+        }
+
+        .exp-item {
+            border-left: 2px solid rgba(255, 255, 255, 0.3);
+            padding-left: 12px;
+            margin-bottom: 15px;
+        }
+
+        .exp-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .exp-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .exp-company {
+            font-size: 0.8rem;
+            color: #cbd5e1;
+            margin: 2px 0;
+        }
+
+        .exp-date {
+            font-size: 0.75rem;
+            color: #94a3b8;
+            margin: 0;
+        }
+
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(8px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-content {
+            background: rgba(30, 41, 59, 0.95);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 16px;
+            width: 90%;
+            max-width: 600px;
+            padding: 24px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+            position: relative;
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: scale(1);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 1.5rem;
+            background: none;
+            border: none;
+            color: #94a3b8;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .close-btn:hover {
+            color: #ffffff;
+        }
+
+        .modal-body h3 {
+            margin-top: 0;
+            font-size: 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 10px;
+        }
+
+        .modal-body p {
+            color: #cbd5e1;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 8px;
+            margin-top: 20px;
+            background: #0f172a;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="main-container">
+
+    <div class="lang-selector-container">
+        <select class="lang-dropdown" onchange="setLanguage(this.value)">
+            <option value="es">ESP</option>
+            <option value="en">ENG</option>
+            <option value="fr">FRA</option>
+            <option value="de">DEU</option>
+            <option value="it">ITA</option>
+            <option value="pt">POR</option>
+            <option value="ru">RUS</option>
+            <option value="zh">ZHO</option>
+            <option value="ja">JPN</option>
+            <option value="ar">ARA</option>
+        </select>
+    </div>
+
+    <header class="profile-header">
+        <h1 class="profile-logo"><%= name %></h1>
+        <p class="profile-subtitle" id="t-subtitle">Desarrollador de Aplicaciones Multiplataforma (DAM)</p>
+    </header>
+
+    <div class="welcome-box" id="t-welcome">
+        Hola me llamo Jesús, vivo en España y tengo <span id="live-age" class="age-highlight">--</span> años. Bienvenidos a mi portafolio.
+    </div>
+
+    <div class="card">
+        <h2 class="card-title" id="t-proj-title">Proyectos Personales</h2>
+        <p class="card-text" id="t-proj-text">
+            Una muestra de los softwares, aplicaciones y sistemas que desarrollo de forma autónoma y durante mi formación en DAM.
+        </p>
+        <div class="project-media">
+
+            <div class="media-box" onclick="openModal('gmip-modal')">
+                <img src="/images/gmip.png" alt="GameMadeInPola" onerror="this.style.display='none';">
+                <div class="media-info">
+                    <strong>GameMadeInPola</strong>
+                    <span class="t-feat">Proyecto Destacado</span>
+                </div>
+            </div>
+
+            <div class="media-box" onclick="openModal('wyrven-modal')">
+                <img src="/images/wyrven.png" alt="Wyrven" onerror="this.style.display='none';">
+                <div class="media-info">
+                    <strong>Wyrven</strong>
+                    <span class="t-feat">Proyecto Destacado</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="card">
+        <h2 class="card-title" id="t-skills-title">Herramientas y Tecnologias</h2>
+        <div class="skills-section">
+
+            <div class="skills-group">
+                <h4 id="t-lang">Lenguajes de Programacion</h4>
+                <div class="tags-container">
+                    <div class="tag">Java</div>
+                    <div class="tag">C / C++</div>
+                    <div class="tag">HTML</div>
+                    <div class="tag">JavaScript</div>
+                </div>
+            </div>
+
+            <div class="skills-group">
+                <h4 id="t-db">Bases de Datos</h4>
+                <div class="tags-container">
+                    <div class="tag">SQL</div>
+                    <div class="tag">PostgreSQL</div>
+                    <div class="tag">MySQL</div>
+                    <div class="tag">MongoDB</div>
+                    <div class="tag">Redis</div>
+                </div>
+            </div>
+
+            <div class="skills-group">
+                <h4 id="t-env">IDEs y Herramientas de Entorno</h4>
+                <div class="tags-container">
+                    <div class="tag">WebStorm</div>
+                    <div class="tag">IntelliJ IDEA</div>
+                    <div class="tag">Visual Studio</div>
+                    <div class="tag">Eclipse</div>
+                    <div class="tag">MS SQL Server Management</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="bottom-grid">
+
+        <div class="card">
+            <h3 class="card-title" id="t-links-title">Enlaces</h3>
+            <div class="links-list">
+                <a href="https://github.com" target="_blank" class="social-btn">
+                    <strong>GitHub</strong>
+                    <span id="t-git-desc">Mis repositorios de codigo</span>
+                </a>
+                <a href="https://linkedin.com" target="_blank" class="social-btn">
+                    <strong>LinkedIn</strong>
+                    <span id="t-lnk-desc">Contacto profesional</span>
+                </a>
+                <a href="mailto:tuemail@correo.com" class="social-btn">
+                    <strong>Correo</strong>
+                    <span id="t-mail-desc">Escribeme un mensaje</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3 class="card-title" id="t-exp-title">Trayectoria</h3>
+
+            <div class="exp-item">
+                <p class="exp-title" id="t-exp1-title">Bachillerato Cientifico y Tecnologico</p>
+                <p class="exp-company" id="t-exp1-comp">Estudiante</p>
+                <p class="exp-date">2022 - 2025</p>
+            </div>
+
+            <div class="exp-item">
+                <p class="exp-title" id="t-exp2-title">Grado Superior DAM</p>
+                <p class="exp-company" id="t-exp2-comp">Estudiante</p>
+                <p class="exp-date">2025 - Presente</p>
+            </div>
+
+            <div class="exp-item">
+                <p class="exp-title" id="t-exp3-title">Proyectos Autonomos</p>
+                <p class="exp-company" id="t-exp3-comp">Desarrollo de Software</p>
+                <p class="exp-date">2026 - Presente</p>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<div id="gmip-modal" class="modal-overlay" onclick="closeModal('gmip-modal')">
+    <div class="modal-content" onclick="event.stopPropagation()">
+        <button class="close-btn" onclick="closeModal('gmip-modal')">&times;</button>
+        <div class="modal-body">
+            <h3>GameMadeInPola</h3>
+            <p id="t-gmip-p1">Este proyecto nace como la continuacion directa del famoso servidor original GamesMadeInPola.</p>
+            <p id="t-gmip-p2">Debido a diferencias de vision y problemas internos surgidos con el poseedor original del servidor, el equipo decidio tomar las riendas del desarrollo de manera independiente. Optamos por reinventarnos y seguir adelante mediante este proceso de rebranding completo, asegurando asi mantener viva la esencia de la comunidad y el codigo, pero bajo una nueva infraestructura y direccion totalmente renovada.</p>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="wyrven-modal" class="modal-overlay" onclick="closeModal('wyrven-modal')">
+    <div class="modal-content" onclick="event.stopPropagation()">
+        <button class="close-btn" onclick="closeModal('wyrven-modal')">&times;</button>
+        <div class="modal-body">
+            <h3>Wyrven</h3>
+            <p id="t-wyr-p1">Este proyecto consiste en el remake completo y detallado del mitico servidor de Minecraft HiveMC, desarrollado tras su cierre definitivo en el año 2021.</p>
+            <p id="t-wyr-p2">El servidor recrea de forma fidedigna y nostalgica la experiencia original de las modalidades mas emblematicas como Survival Games, SkyWars, BedWars, Hide and Seek y Block Party, implementando sistemas completos de estadísticas, votaciones, cosmeticos y mecanicas personalizadas.</p>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/qaQUaj1eJp4" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const birthDate = new Date(2006, 1, 3);
+    let currentLang = 'es';
+
+    const dictionary = {
+        es: {
+            subtitle: "Desarrollador de Aplicaciones Multiplataforma (DAM)",
+            welcome: "Hola me llamo Jesús, vivo en España y tengo <span id='live-age' class='age-highlight'>--</span> anos. Bienvenidos a mi portafolio.",
+            projTitle: "Proyectos Personales",
+            projText: "Una muestra de los softwares, aplicaciones y sistemas que desarrollo de forma autónoma y durante mi formación en DAM.",
+            feat: "Proyecto Destacado",
+            skillsTitle: "Herramientas y Tecnologias",
+            lang: "Lenguajes de Programacion",
+            db: "Bases de Datos",
+            env: "IDEs y Herramientas de Entorno",
+            linksTitle: "Enlaces",
+            gitDesc: "Mis repositorios de codigo",
+            lnkDesc: "Contacto profesional",
+            mailDesc: "Escribeme un mensaje",
+            expTitle: "Trayectoria",
+            exp1Title: "Bachillerato Cientifico y Tecnologico",
+            exp1Comp: "Estudiante",
+            exp2Title: "Grado Superior DAM",
+            exp2Comp: "Estudiante",
+            exp3Title: "Proyectos Autonomos",
+            exp3Comp: "Desarrollo de Software",
+            gmipP1: "Este proyecto nace como la continuacion directa del famoso servidor original GamesMadeInPola.",
+            gmipP2: "Debido a diferencias de vision y problemas internos surgidos con el poseedor original del servidor, el equipo decidio tomar las riendas del desarrollo de manera independiente. Optamos por reinventarnos y seguir adelante mediante este proceso de rebranding completo, asegurando asi mantener viva la esencia de la comunidad y el codigo, pero bajo una nueva infraestructura y direccion totalmente renovada.",
+            wyrP1: "Este proyecto consiste en el remake completo y detallado del mitico servidor de Minecraft HiveMC, desarrollado tras su cierre definitivo en el año 2021.",
+            wyrP2: "El servidor recrea de forma fidedigna y nostalgica la experiencia original de las modalidades mas emblematicas como Survival Games, SkyWars, BedWars, Hide and Seek y Block Party, implementando sistemas completos de estadísticas, votaciones, cosméticos y mecánicas personalizadas."
+        },
+        en: {
+            subtitle: "Multiplatform App Developer",
+            welcome: "Hello, my name is Jesus, I live in Spain and I am <span id='live-age' class='age-highlight'>--</span> years old. Welcome to my development portfolio.",
+            projTitle: "Personal Projects",
+            projText: "A sample of the software, applications, and systems I develop independently and during my training.",
+            feat: "Featured Project",
+            skillsTitle: "Tools and Technologies",
+            lang: "Programming Languages",
+            db: "Databases",
+            env: "IDEs and Environment Tools",
+            linksTitle: "Links",
+            gitDesc: "My code repositories",
+            lnkDesc: "Professional network",
+            mailDesc: "Send me a message",
+            expTitle: "Background",
+            exp1Title: "Scientific and Technological High School",
+            exp1Comp: "Student",
+            exp2Title: "Higher Degree in Multiplatform App Development",
+            exp2Comp: "Student",
+            exp3Title: "Independent Projects",
+            exp3Comp: "Software Development",
+            gmipP1: "This project was born as the direct continuation of the famous original server GamesMadeInPola.",
+            gmipP2: "Due to differences in vision and internal issues with the original owner of the server, the team decided to take over the development independently. We chose to reinvent ourselves and move forward through this complete rebranding process, thus ensuring the essence of the community and code remains alive under a renewed infrastructure and management.",
+            wyrP1: "This project consists of a full and detailed remake of the mythical Minecraft server HiveMC, developed after its permanent shutdown in 2021.",
+            wyrP2: "The server faithfully and nostalgically recreates the original experience of iconic modes such as Survival Games, SkyWars, BedWars, Hide and Seek, and Block Party, implementing full stat tracking, voting, cosmetics, and custom game mechanics."
+        },
+        fr: {
+            subtitle: "Développeur d'Applications Multiplateformes",
+            welcome: "Bonjour, je m'appelle Jesus, j'habite en Espagne et j'ai <span id='live-age' class='age-highlight'>--</span> ans. Bienvenue dans mon portfolio de développement.",
+            projTitle: "Projets Personnels",
+            projText: "Un aperçu des logiciels, applications et systèmes que je développe de manière autonome et pendant ma formation.",
+            feat: "Projet Phare",
+            skillsTitle: "Outils et Technologies",
+            lang: "Langages de Programmation",
+            db: "Bases de Données",
+            env: "IDEs et Outils d'Environnement",
+            linksTitle: "Liens",
+            gitDesc: "Mes dépôts de code",
+            lnkDesc: "Contact professionnel",
+            mailDesc: "Envoyez-moi un message",
+            expTitle: "Parcours",
+            exp1Title: "Baccalauréat Scientifique et Technologique",
+            exp1Comp: "Étudiant",
+            exp2Title: "Diplôme Supérieur en Développement d'Applications",
+            exp2Comp: "Étudiant",
+            exp3Title: "Projets Autonomes",
+            exp3Comp: "Développement Logiciel",
+            gmipP1: "Ce projet est la continuation directe du célèbre serveur original GamesMadeInPola.",
+            gmipP2: "En raison de divergences de vision et de problèmes internes avec le propriétaire initial du serveur, l'équipe a décidé de reprendre le développement de manière indépendante. Nous avons choisi de nous réinventer à travers un processus complet de rebranding, garantissant que l'essence de la communauté reste vivante sous une nouvelle direction.",
+            wyrP1: "Ce projet consiste en un remake complet du serveur mythique de Minecraft HiveMC, développé après sa fermeture définitive en 2021.",
+            wyrP2: "Le serveur recrée fidèlement l'expérience originale de modes emblématiques comme Survival Games, SkyWars, BedWars, Hide and Seek et Block Party, avec des statistiques complètes et des cosmétiques."
+        },
+        de: {
+            subtitle: "Entwickler für Multiplattform-Anwendungen",
+            welcome: "Hallo, ich heiße Jesus, wohne in Spanien und bin <span id='live-age' class='age-highlight'>--</span> Jahre alt. Willkommen in meinem Entwicklungsportfolio.",
+            projTitle: "Persönliche Projekte",
+            projText: "Eine Auswahl der Software, Anwendungen und Systeme, die ich selbstständig und während meiner Ausbildung entwickle.",
+            feat: "Herausragendes Projekt",
+            skillsTitle: "Werkzeuge und Technologien",
+            lang: "Programmiersprachen",
+            db: "Datenbanken",
+            env: "IDEs und Umgebungswerkzeuge",
+            linksTitle: "Links",
+            gitDesc: "Meine Code-Repositories",
+            lnkDesc: "Professioneller Kontakt",
+            mailDesc: "Schreiben Sie mir eine Nachricht",
+            expTitle: "Werdegang",
+            exp1Title: "Wissenschaftliches und Technologisches Abitur",
+            exp1Comp: "Schüler",
+            exp2Title: "Höheres Diplom in Multiplattform-Entwicklung",
+            exp2Comp: "Student",
+            exp3Title: "Autonome Projekte",
+            exp3Comp: "Softwareentwicklung",
+            gmipP1: "Dieses Projekt wurde als direkte Fortsetzung des berühmten Originalservers GamesMadeInPola ins Leben gerufen.",
+            gmipP2: "Aufgrund unterschiedlicher Visionen und interner Probleme mit dem ursprünglichen Besitzer entschied sich das Team, die Entwicklung unabhängig fortzuführen. Wir haben uns für ein komplettes Rebranding entschieden, um das Wesen der Community zu bewahren.",
+            wyrP1: "Dieses Projekt ist ein vollständiges und detailliertes Remake des legendären Minecraft-Servers HiveMC, das nach dessen Schließung im Jahr 2021 entwickelt wurde.",
+            wyrP2: "Der Server stellt die ursprüngliche Erfahrung legendärer Modi wie Survival Games, SkyWars, BedWars, Hide and Seek und Block Party mit vollständigen Systemen originalgetreu wieder her."
+        },
+        it: {
+            subtitle: "Sviluppatore di Applicazioni Molteplici",
+            welcome: "Ciao, mi chiamo Jesus, vivo in Spagna e ho <span id='live-age' class='age-highlight'>--</span> anni. Benvenuti nel mio portfolio di sviluppo.",
+            projTitle: "Progetti Personali",
+            projText: "Una selezione di software, applicazioni e sistemi che sviluppo autonomamente e durante la mia formazione.",
+            feat: "Progetto In Evidenza",
+            skillsTitle: "Strumenti e Tecnologie",
+            lang: "Linguaggi di Programmazione",
+            db: "Database",
+            env: "IDEs e Strumenti di Sviluppo",
+            linksTitle: "Collegamenti",
+            gitDesc: "I miei repository di codice",
+            lnkDesc: "Contatto professionale",
+            mailDesc: "Scrivimi un messaggio",
+            expTitle: "Percorso",
+            exp1Title: "Diploma Scientifico e Tecnologico",
+            exp1Comp: "Studente",
+            exp2Title: "Diploma Superiore in Sviluppo Multipiattaforma",
+            exp2Comp: "Studente",
+            exp3Title: "Progetti Autonomi",
+            exp3Comp: "Sviluppo Software",
+            gmipP1: "Questo progetto nasce come continuazione diretta del famoso server originale GamesMadeInPola.",
+            gmipP2: "A causa di divergenze di visione e problemi interni con il proprietario originale del server, il team ha deciso di assumere lo sviluppo in modo indipendente, procedendo a un rebranding completo per mantenere viva la comunità.",
+            wyrP1: "Questo progetto consiste nel remake completo del mitico server Minecraft HiveMC, sviluppato dopo la sua chiusura definitiva nel 2021.",
+            wyrP2: "Il server ricrea fedelmente l'esperienza originale di modalità iconiche come Survival Games, SkyWars, BedWars, Hide and Seek e Block Party, implementando statistiche e cosmetici."
+        },
+        pt: {
+            subtitle: "Desenvolvedor de Aplicações Multiplataforma",
+            welcome: "Olá, meu nome é Jesus, moro na Espanha e tenho <span id='live-age' class='age-highlight'>--</span> anos. Bem-vindo ao meu portfólio de desenvolvimento.",
+            projTitle: "Projetos Pessoais",
+            projText: "Uma amostra dos softwares, aplicações e sistemas que desenvolvo de forma autónoma e durante a minha formação.",
+            feat: "Projeto de Destaque",
+            skillsTitle: "Ferramentas e Tecnologias",
+            lang: "Linguagens de Programação",
+            db: "Bases de Dados",
+            env: "IDEs e Ferramentas de Ambiente",
+            linksTitle: "Links",
+            gitDesc: "Meus repositórios de código",
+            lnkDesc: "Contato profissional",
+            mailDesc: "Envie-me uma mensagem",
+            expTitle: "Trajetória",
+            exp1Title: "Ensino Secundário Científico-Tecnológico",
+            exp1Comp: "Estudante",
+            exp2Title: "Curso Técnico Superior em Desenvolvimento",
+            exp2Comp: "Estudante",
+            exp3Title: "Projetos Autónomos",
+            exp3Comp: "Desenvolvimento de Software",
+            gmipP1: "Este projeto nasce como a continuação direta do famoso servidor original GamesMadeInPola.",
+            gmipP2: "Devido a diferenças de visão e problemas internos com o proprietário original do servidor, a equipa decidiu assumir o desenvolvimento de forma independente através de um rebranding completo para manter viva a essência.",
+            wyrP1: "Este projeto consiste no remake completo do mítico servidor de Minecraft HiveMC, desenvolvido após o seu encerramento em 2021.",
+            wyrP2: "O servidor recria fielmente a experiência original de modalidades emblemáticas como Survival Games, SkyWars, BedWars, Hide and Seek e Block Party, com sistemas de estatísticas."
+        },
+        ru: {
+            subtitle: "Разработчик кроссплатформенных приложений",
+            welcome: "Привет! Меня зовут Хесус, я живу в Испании, и мне <span id='live-age' class='age-highlight'>--</span> лет. Добро пожаловать в мое портфолио.",
+            projTitle: "Личные проекты",
+            projText: "Примеры программного обеспечения, приложений и систем, которые я разрабатываю самостоятельно и в процессе обучения.",
+            feat: "Основной проект",
+            skillsTitle: "Инструменты и технологии",
+            lang: "Языки программирования",
+            db: "Базы данных",
+            env: "IDEs и среды разработки",
+            linksTitle: "Ссылки",
+            gitDesc: "Мои репозитории кода",
+            lnkDesc: "Профессиональные контакты",
+            mailDesc: "Напишите мне сообщение",
+            expTitle: "История",
+            exp1Title: "Научно-технологический бакалавриат",
+            exp1Comp: "Учащийся",
+            exp2Title: "Высшее образование по разработке приложений",
+            exp2Comp: "Студент",
+            exp3Title: "Автономные проекты",
+            exp3Comp: "Разработка ПО",
+            gmipP1: "Этот проект родился как прямое продолжение известного оригинального сервера GamesMadeInPola.",
+            gmipP2: "Из-за разногласий в видении и внутренних проблем с первоначальным владельцем сервера команда решила взять разработку в свои руки. Мы провели полный ребрендинг, сохранив дух сообщества.",
+            wyrP1: "Этот проект представляет собой полный ремейк легендарного Майнкрафт-сервера HiveMC, созданный после его закрытия в 2021 году.",
+            wyrP2: "Сервер воссоздает оригинальный опыт культовых режимов, таких как Survival Games, SkyWars, BedWars, Hide and Seek и Block Party, со статистикой и косметикой."
+        },
+        zh: {
+            subtitle: "跨平台应用 graphical 开发者",
+            welcome: "你好，我叫 Jesus，现居西班牙，今年 <span id='live-age' class='age-highlight'>--</span> 岁。欢迎来到我的开发作品集。",
+            projTitle: "个人项目",
+            projText: "我在独立开发以及在学习期间所构建的软件、应用程序和系统的展示。",
+            feat: "推荐项目",
+            skillsTitle: "工具与技术",
+            lang: "编程语言",
+            db: "数据库",
+            env: "IDEs 与集成开发环境",
+            linksTitle: "链接",
+            gitDesc: "我的代码仓库",
+            lnkDesc: "职业联络",
+            mailDesc: "给我发邮件",
+            expTitle: "履历",
+            exp1Title: "科学与技术高中",
+            exp1Comp: "学生",
+            exp2Title: "高级跨平台应用开发学位",
+            exp2Comp: "学生",
+            exp3Title: "独立开发项目",
+            exp3Comp: "软件开发",
+            gmipP1: "该项目是著名的原版 GamesMadeInPola 服务器的直接延续。",
+            gmipP2: "由于与服务器原拥有者在愿景上的分歧和内部问题，团队决定独立接管开发。我们选择通过彻底的品牌重塑来推进项目，以全新的架构确保社区的活力。",
+            wyrP1: "该项目是对传奇 Minecraft 服务器 HiveMC 在 2021 年停服后的完整重制。",
+            wyrP2: "服务器完美还原了 Survival Games、SkyWars、BedWars、Hide and Seek 和 Block Party 等经典玩法的原汁原味体验，包含完整的统计与时装系统。"
+        },
+        ja: {
+            subtitle: "マルチプラットフォームアプリ開発者",
+            welcome: "こんにちは、イエスと申します。スペイン在住の <span id='live-age' class='age-highlight'>--</span> 歳です。開発ポートフォリオへようこそ。",
+            projTitle: "個人プロジェクト",
+            projText: "独学および在学中に開発したソフトウェア、アプリ、システムのサンプルです。",
+            feat: "注目のプロジェクト",
+            skillsTitle: "ツールと技術",
+            lang: "プログラミング言語",
+            db: "データベース",
+            env: "IDEs & 開発環境ツール",
+            linksTitle: "リンク",
+            gitDesc: "ソースコードのリポジトリ",
+            lnkDesc: "ビジネス連絡先",
+            mailDesc: "メッセージを送信",
+            expTitle: "経歴",
+            exp1Title: "科学技術高等学校",
+            exp1Comp: "生徒",
+            exp2Title: "マルチプラットフォーム開発高等学位",
+            exp2Comp: "学生",
+            exp3Title: "自主開発プロジェクト",
+            exp3Comp: "ソフトウェア開発",
+            gmipP1: "このプロジェクトは、有名なオリジナルサーバー GamesMadeInPola の直接の後継として誕生しました。",
+            gmipP2: "元のサーバー所有者との方針の違いや内部的な問題により、チームは独立して開発を継続することを決断しました。完全なリブランディングを行い、コミュニティの魂を守っています。",
+            wyrP1: "このプロジェクトは、2021年に閉鎖された伝説的なMinecraftサーバー「HiveMC」の完全なリメイクです。",
+            wyrP2: "Survival Games、SkyWars、BedWars、Hide and Seek、Block Partyなどの象徴的なモードを、統計やコスメシステムを含めて忠実に再現しています。"
+        },
+        ar: {
+            subtitle: "مطوّر تطبيقات منصات متعددة",
+            welcome: "مرحباً، اسمي خيسوس، أعيش في إسبانيا وأبلغ من العمر <span id='live-age' class='age-highlight'>--</span> عاماً. أهلاً بكم في معرض أعمالي.",
+            projTitle: "المشاريع الشخصية",
+            projText: "عينة من البرمجيات والتطبيقات والأنظمة التي قمت بتطويرها بشكل مستقل وأثناء دراستي.",
+            feat: "مشروع مميز",
+            skillsTitle: "الأدوات والتقنيات",
+            lang: "لغات البرمجة",
+            db: "قواعد البيانات",
+            env: "بيئات التطوير المتكاملة والأدوات",
+            linksTitle: "الروابط",
+            gitDesc: "مستودعات الكود الخاصة بي",
+            lnkDesc: "التواصل المهني",
+            mailDesc: "أرسل لي رسالة",
+            expTitle: "المسيرة",
+            exp1Title: "البكالوريا العلمية والتكنولوجية",
+            exp1Comp: "طالب",
+            exp2Title: "درجة عليا في تطوير تطبيقات المنصات",
+            exp2Comp: "طالب",
+            exp3Title: "مشاريع مستقلة",
+            exp3Comp: "تطوير البرمجيات",
+            gmipP1: "ولد هذا المشروع كامتداد مباشر لخادم GamesMadeInPola الأصلي الشهير.",
+            gmipP2: "بسبب الاختلافات في الرؤية والمشاكل الداخلية مع المالك الأصلي للخادم، قرر الفريق تولي التطوير بشكل مستقل. اخترنا المضي قدماً من خلال إعادة تسمية العلامة التجارية بالكامل لضمان بقاء جوهر المجتمع حياً.",
+            wyrP1: "هذا المشروع عبارة عن إعادة صياغة كاملة وتفصيلية لخادم ماينكرافت الأسطوري HiveMC، والذي تم تطويره بعد إغلاقه نهائياً في عام 2021.",
+            wyrP2: "يعيد الخادم بصدق وبطابع كلاسيكي التجربة الأصلية لأنماط الألعاب الشهيرة مثل Survival Games وSkyWars وBedWars وHide and Seek وBlock Party، مع أنظمة إحصاءات كاملة."
+        }
+    };
+
+    function updateAge() {
+        const now = new Date();
+        let age = now.getFullYear() - birthDate.getFullYear();
+        const monthDiff = now.getMonth() - birthDate.getMonth();
+        if (monthDiff < 0 || (monthDiff === 0 && now.getDate() < birthDate.getDate())) {
+            age--;
+        }
+        const element = document.getElementById('live-age');
+        if (element) element.innerText = age;
+    }
+
+    function setLanguage(lang) {
+        currentLang = lang;
+
+        document.getElementById('t-subtitle').innerText = dictionary[lang].subtitle;
+        document.getElementById('t-welcome').innerHTML = dictionary[lang].welcome;
+        document.getElementById('t-proj-title').innerText = dictionary[lang].projTitle;
+        document.getElementById('t-proj-text').innerText = dictionary[lang].projText;
+        document.getElementById('t-skills-title').innerText = dictionary[lang].skillsTitle;
+        document.getElementById('t-lang').innerText = dictionary[lang].lang;
+        document.getElementById('t-db').innerText = dictionary[lang].db;
+        document.getElementById('t-env').innerText = dictionary[lang].env;
+        document.getElementById('t-links-title').innerText = dictionary[lang].linksTitle;
+        document.getElementById('t-git-desc').innerText = dictionary[lang].gitDesc;
+        document.getElementById('t-lnk-desc').innerText = dictionary[lang].lnkDesc;
+        document.getElementById('t-mail-desc').innerText = dictionary[lang].mailDesc;
+        document.getElementById('t-exp-title').innerText = dictionary[lang].expTitle;
+
+        document.getElementById('t-exp1-title').innerText = dictionary[lang].exp1Title;
+        document.getElementById('t-exp1-comp').innerText = dictionary[lang].exp1Comp;
+        document.getElementById('t-exp2-title').innerText = dictionary[lang].exp2Title;
+        document.getElementById('t-exp2-comp').innerText = dictionary[lang].exp2Comp;
+        document.getElementById('t-exp3-title').innerText = dictionary[lang].exp3Title;
+        document.getElementById('t-exp3-comp').innerText = dictionary[lang].exp3Comp;
+
+        document.getElementById('t-gmip-p1').innerText = dictionary[lang].gmipP1;
+        document.getElementById('t-gmip-p2').innerText = dictionary[lang].gmipP2;
+        document.getElementById('t-wyr-p1').innerText = dictionary[lang].wyrP1;
+        document.getElementById('t-wyr-p2').innerText = dictionary[lang].wyrP2;
+
+        document.querySelectorAll('.t-feat').forEach(el => el.innerText = dictionary[lang].feat);
+
+        updateAge();
+    }
+
+    function openModal(id) {
+        document.getElementById(id).classList.add('active');
+    }
+
+    function closeModal(id) {
+        document.getElementById(id).classList.remove('active');
+    }
+
+    updateAge();
+</script>
+
+</body>
+</html>

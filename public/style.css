@@ -1,0 +1,195 @@
+:root {
+    --bg-main: #0b0f19;
+    --bg-card: #131a2c;
+    --text-main: #e2e8f0;
+    --text-muted: #94a3b8;
+    --accent: #10b981; /* Verde esmeralda tipo terminal */
+    --accent-dim: rgba(16, 185, 129, 0.1);
+    --border: #1e293b;
+}
+
+body {
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    font-family: 'Courier New', Courier, monospace; /* Toque hacker/dev, puedes usar Inter o Segoe UI si prefieres */
+    margin: 0;
+    line-height: 1.6;
+}
+
+.container {
+    width: 90%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+header {
+    padding: 20px 0;
+    border-bottom: 1px solid var(--border);
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.3rem;
+    color: var(--accent);
+}
+
+nav a {
+    color: var(--text-muted);
+    text-decoration: none;
+    margin-left: 20px;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: var(--accent);
+}
+
+.badge {
+    background: var(--accent-dim);
+    color: var(--accent);
+    padding: 5px 12px;
+    border-radius: 15px;
+    display: inline-block;
+    font-size: 0.85rem;
+    margin-bottom: 15px;
+    border: 1px solid var(--accent);
+}
+
+.hero {
+    padding: 80px 0;
+    text-align: left;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin: 0;
+}
+
+.highlight {
+    color: var(--accent);
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    margin-top: 5px;
+}
+
+.bio {
+    max-width: 600px;
+    color: var(--text-muted);
+}
+
+.hero-buttons {
+    margin-top: 25px;
+}
+
+.btn {
+    background-color: var(--accent);
+    color: var(--bg-main);
+    padding: 10px 20px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 4px;
+    margin-right: 15px;
+    display: inline-block;
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--text-main);
+    border: 1px solid var(--border);
+}
+
+.btn-secondary:hover {
+    background-color: var(--border);
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background: var(--border);
+    margin: 40px 0;
+}
+
+/* SKILLS */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.skill-category {
+    background: var(--bg-card);
+    padding: 20px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+}
+
+.skill-category h3 {
+    margin-top: 0;
+    color: var(--accent);
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 10px;
+}
+
+.skill-category ul {
+    list-style: none;
+    padding: 0;
+}
+
+.skill-category li {
+    padding: 5px 0;
+    color: var(--text-muted);
+}
+
+.skill-category li::before {
+    content: "> ";
+    color: var(--accent);
+}
+
+/* PROJECTS */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.project-card {
+    background: var(--bg-card);
+    padding: 25px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    position: relative;
+}
+
+.project-type {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 0.75rem;
+    background: var(--border);
+    padding: 3px 8px;
+    border-radius: 3px;
+    color: var(--text-muted);
+}
+
+.project-tech {
+    margin-top: 15px;
+    color: var(--accent);
+    font-size: 0.9rem;
+}
+
+footer {
+    text-align: center;
+    padding: 40px 0;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    border-top: 1px solid var(--border);
+    margin-top: 60px;
+}
