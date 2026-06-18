@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= title %></title>
+    <title>DcRubik | Portfolio</title>
     <style>
         body {
             margin: 0;
             padding: 0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: #111827;
-            background-image: url('/images/rubikhytale.png');
+            background-image: url('public/images/rubikhytale.png');
             background-attachment: fixed;
             background-size: cover;
             background-position: center;
@@ -392,7 +392,7 @@
     </div>
 
     <header class="profile-header">
-        <h1 class="profile-logo"><%= name %></h1>
+        <h1 class="profile-logo">DcRubik</h1>
         <p class="profile-subtitle" id="t-subtitle">Desarrollador de Aplicaciones Multiplataforma (DAM)</p>
     </header>
 
@@ -408,7 +408,7 @@
         <div class="project-media">
 
             <div class="media-box" onclick="openModal('gmip-modal')">
-                <img src="/images/gmip.png" alt="GameMadeInPola" onerror="this.style.display='none';">
+                <img src="public/images/gmip.png" alt="GameMadeInPola" onerror="this.style.display='none';">
                 <div class="media-info">
                     <strong>GameMadeInPola</strong>
                     <span class="t-feat">Proyecto Destacado</span>
@@ -416,7 +416,7 @@
             </div>
 
             <div class="media-box" onclick="openModal('wyrven-modal')">
-                <img src="/images/wyrven.png" alt="Wyrven" onerror="this.style.display='none';">
+                <img src="public/images/wyrven.png" alt="Wyrven" onerror="this.style.display='none';">
                 <div class="media-info">
                     <strong>Wyrven</strong>
                     <span class="t-feat">Proyecto Destacado</span>
@@ -546,7 +546,7 @@
     const dictionary = {
         es: {
             subtitle: "Desarrollador de Aplicaciones Multiplataforma (DAM)",
-            welcome: "Hola me llamo Jesús, vivo en España y tengo <span id='live-age' class='age-highlight'>--</span> anos. Bienvenidos a mi portafolio.",
+            welcome: "Hola me llamo Jesús, vivo en España y tengo <span id='live-age' class='age-highlight'>--</span> años. Bienvenidos a mi portafolio.",
             projTitle: "Proyectos Personales",
             projText: "Una muestra de los softwares, aplicaciones y sistemas que desarrollo de forma autónoma y durante mi formación en DAM.",
             feat: "Proyecto Destacado",
@@ -631,7 +631,7 @@
             skillsTitle: "Werkzeuge und Technologien",
             lang: "Programmiersprachen",
             db: "Datenbanken",
-            env: "IDEs und Umgebungswerkzeuge",
+            env: "IDEs und Umgebungzeuge",
             linksTitle: "Links",
             gitDesc: "Meine Code-Repositories",
             lnkDesc: "Professioneller Kontakt",
@@ -669,7 +669,7 @@
             exp2Comp: "Studente",
             exp3Title: "Progetti Autonomi",
             exp3Comp: "Sviluppo Software",
-            gmipP1: "Questo progetto nasce come continuazione diretta del famoso server originale GamesMadeInPola.",
+            gmipP1: "Questo progetto nasce como continuazione diretta del famoso server originale GamesMadeInPola.",
             gmipP2: "A causa di divergenze di visione e problemi interni con il proprietario originale del server, il team ha deciso di assumere lo sviluppo in modo indipendente, procedendo a un rebranding completo per mantenere viva la comunità.",
             wyrP1: "Questo progetto consiste nel remake completo del mitico server Minecraft HiveMC, sviluppato dopo la sua chiusura definitiva nel 2021.",
             wyrP2: "Il server ricrea fedelmente l'esperienza originale di modalità iconiche come Survival Games, SkyWars, BedWars, Hide and Seek e Block Party, implementando statistiche e cosmetici."
@@ -693,11 +693,11 @@
             exp1Comp: "Estudante",
             exp2Title: "Curso Técnico Superior em Desenvolvimento",
             exp2Comp: "Estudante",
-            exp3Title: "Projetos Autónomos",
+            exp3Title: "Proyectos Autónomos",
             exp3Comp: "Desenvolvimento de Software",
             gmipP1: "Este projeto nasce como a continuação direta do famoso servidor original GamesMadeInPola.",
             gmipP2: "Devido a diferenças de visão e problemas internos com o proprietário original do servidor, a equipa decidiu assumir o desenvolvimento de forma independente através de um rebranding completo para manter viva a essência.",
-            wyrP1: "Este projeto consiste no remake completo do mítico servidor de Minecraft HiveMC, desenvolvido após o seu encerramento em 2021.",
+            wyrP1: "Este projeto consiste no remake completo do mítico servidor de Minecraft HiveMC, developed após o seu encerramento em 2021.",
             wyrP2: "O servidor recria fielmente a experiência original de modalidades emblemáticas como Survival Games, SkyWars, BedWars, Hide and Seek e Block Party, com sistemas de estatísticas."
         },
         ru: {
@@ -727,7 +727,7 @@
             wyrP2: "Сервер воссоздает оригинальный опыт культовых режимов, таких как Survival Games, SkyWars, BedWars, Hide and Seek и Block Party, со статистикой и косметикой."
         },
         zh: {
-            subtitle: "跨平台应用 graphical 开发者",
+            subtitle: "跨平台应用开发专业学生",
             welcome: "你好，我叫 Jesus，现居西班牙，今年 <span id='live-age' class='age-highlight'>--</span> 岁。欢迎来到我的开发作品集。",
             projTitle: "个人项目",
             projText: "我在独立开发以及在学习期间所构建的软件、应用程序和系统的展示。",
@@ -750,7 +750,7 @@
             gmipP1: "该项目是著名的原版 GamesMadeInPola 服务器的直接延续。",
             gmipP2: "由于与服务器原拥有者在愿景上的分歧和内部问题，团队决定独立接管开发。我们选择通过彻底的品牌重塑来推进项目，以全新的架构确保社区的活力。",
             wyrP1: "该项目是对传奇 Minecraft 服务器 HiveMC 在 2021 年停服后的完整重制。",
-            wyrP2: "服务器完美还原了 Survival Games、SkyWars、BedWars、Hide and Seek 和 Block Party 等经典玩法的原汁原味体验，包含完整的统计与时装系统。"
+            wyrP2: "服务器完美还原了 Survival Games、SkyWars、BedWars、Hide and Seek 和 Block Party 等经典玩法的原汁原味体验。"
         },
         ja: {
             subtitle: "マルチプラットフォームアプリ開発者",
