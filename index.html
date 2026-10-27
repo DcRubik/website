@@ -423,6 +423,14 @@
                 </div>
             </div>
 
+            <div class="media-box" onclick="openModal('epiccoon-modal')">
+                <div style="aspect-ratio: 16 / 9; display:flex; align-items:center; justify-content:center; font-size:3rem; background:linear-gradient(135deg, rgba(15,23,42,.9), rgba(8,145,178,.35));">🦝</div>
+                <div class="media-info">
+                    <strong>Epiccoon</strong>
+                    <span class="t-feat">Proyecto Destacado</span>
+                </div>
+            </div>
+
         </div>
     </div>
 
@@ -434,9 +442,14 @@
                 <h4 id="t-lang">Lenguajes de Programacion y Marcas</h4>
                 <div class="tags-container">
                     <div class="tag">Java</div>
-                    <div class="tag">C / C++</div>
-                    <div class="tag" style="border-color: rgba(255, 255, 255, 0.25);">HTML (Lenguaje de Marcas)</div>
+                    <div class="tag">Kotlin</div>
+                    <div class="tag">Python</div>
                     <div class="tag">JavaScript</div>
+                    <div class="tag">C / C++</div>
+                    <div class="tag">C#</div>
+                    <div class="tag">Visual Basic</div>
+                    <div class="tag">HTML5</div>
+                    <div class="tag">XML</div>
                 </div>
             </div>
 
@@ -454,11 +467,42 @@
             <div class="skills-group">
                 <h4 id="t-env">IDEs y Herramientas de Entorno</h4>
                 <div class="tags-container">
-                    <div class="tag">WebStorm</div>
                     <div class="tag">IntelliJ IDEA</div>
                     <div class="tag">Visual Studio</div>
+                    <div class="tag">Visual Studio Code</div>
+                    <div class="tag">WebStorm</div>
+                    <div class="tag">Android Studio</div>
                     <div class="tag">Eclipse</div>
-                    <div class="tag">MS SQL Server Management</div>
+                    <div class="tag">SQL Server Management Studio</div>
+                    <div class="tag">Google Chrome</div>
+                </div>
+            </div>
+
+            <div class="skills-group">
+                <h4>Backend, APIs y Entornos</h4>
+                <div class="tags-container">
+                    <div class="tag">FastAPI</div>
+                    <div class="tag">Flask</div>
+                    <div class="tag">Uvicorn</div>
+                    <div class="tag">Pydantic</div>
+                    <div class="tag">Node.js</div>
+                    <div class="tag">Express.js</div>
+                    <div class="tag">Python venv</div>
+                    <div class="tag">pip</div>
+                    <div class="tag">Poetry</div>
+                    <div class="tag">npm</div>
+                </div>
+            </div>
+
+            <div class="skills-group">
+                <h4>Build, Version Control y APIs</h4>
+                <div class="tags-container">
+                    <div class="tag">Maven</div>
+                    <div class="tag">Gradle</div>
+                    <div class="tag">Git</div>
+                    <div class="tag">GitHub</div>
+                    <div class="tag">Postman</div>
+                    <div class="tag">Docker</div>
                 </div>
             </div>
 
@@ -627,12 +671,25 @@
     <div class="modal-content" onclick="event.stopPropagation()">
         <button class="close-btn" onclick="closeModal('wyrven-modal')">&times;</button>
         <div class="modal-body">
-            <h3>Wyrven</h3>
-            <p id="t-wyr-p1">Este proyecto consiste en el remake completo y detallado del mítico servidor de Minecraft HiveMC, desarrollado tras su cierre definitivo en el año 2021.</p>
-            <p id="t-wyr-p2">El servidor recrea de forma fidedigna y nostalgica la experiencia original de las modalidades mas emblematicas como Survival Games, SkyWars, BedWars, Hide and Seek y Block Party, implementando sistemas completos de estadísticas, votaciones, cosmeticos y mecanicas personalizadas.</p>
+            <h3>Wyrven · Proyecto anterior</h3>
+            <p id="t-wyr-p1">Wyrven fue una etapa anterior del proyecto de servidor. Su desarrollo se está reorientando hacia Epiccoon.</p>
+            <p id="t-wyr-p2">Epiccoon es el proyecto actual: una red multilingüe de Minecraft cuya identidad y legado principal se inspiran en OlimpoCraft, con minijuegos y sistemas personalizados.</p>
             <div class="video-container">
                 <iframe src="https://www.youtube.com/embed/qaQUaj1eJp4" allowfullscreen></iframe>
             </div>
+        </div>
+    </div>
+</div>
+
+<div id="epiccoon-modal" class="modal-overlay" onclick="closeModal('epiccoon-modal')">
+    <div class="modal-content" onclick="event.stopPropagation()">
+        <button class="close-btn" onclick="closeModal('epiccoon-modal')">&times;</button>
+        <div class="modal-body">
+            <h3>Epiccoon</h3>
+            <p><strong>Estado:</strong> Proyecto actual en desarrollo</p>
+            <p>Epiccoon es una red de Minecraft premium y multilingüe, concebida como la continuación del legado de OlimpoCraft. El objetivo es construir una experiencia propia de minijuegos con sistemas personalizados, una infraestructura moderna y una comunidad internacional.</p>
+            <p>El proyecto contempla una arquitectura modular para lobbies, colas y partidas, herramientas de administración, sistemas de rangos configurables, traducciones y elementos cosméticos para eventos.</p>
+            <p>Wyrven forma parte de la historia del proyecto y su transición hacia Epiccoon.</p>
         </div>
     </div>
 </div>
@@ -691,8 +748,8 @@
             exp3Comp: "Software Development",
             gmipP1: "This project was born as the direct continuation of the famous original server GamesMadeInPola.",
             gmipP2: "Due to differences in vision and internal issues with the original owner of the server, the team decided to take over the development independently. We chose to reinvent ourselves and move forward through this complete rebranding process, thus ensuring the essence of the community and code remains alive under a renewed infrastructure and management.",
-            wyrP1: "This project consists of a full and detailed remake of the mythical Minecraft server HiveMC, developed after its permanent shutdown in 2021.",
-            wyrP2: "The server faithfully and nostalgically recreates the original experience of iconic modes such as Survival Games, SkyWars, BedWars, Hide and Seek, and Block Party, implementing full stat tracking, voting, cosmetics, and custom game mechanics."
+            wyrP1: "Wyrven was an earlier stage of the server project. Its development is being redirected towards Epiccoon.",
+            wyrP2: "Epiccoon is the current project: a multilingual Minecraft network whose main identity and legacy are inspired by OlimpoCraft, with minigames and custom systems."
         },
         fr: {
             subtitle: "Développeur d'Applications Multiplateformes",
@@ -717,7 +774,7 @@
             exp3Comp: "Développement Logiciel",
             gmipP1: "Ce projet est la continuation directe du célèbre serveur original GamesMadeInPola.",
             gmipP2: "En raison de divergences de vision et de problèmes internes avec le propriétaire initial du serveur, l'équipe a décidé de reprendre le développement de manière indépendante. Nous avons choisi de nous réinventer à travers un processus complet de rebranding, garantissant que l'essence de la communauté reste vivante sous une nouvelle direction.",
-            wyrP1: "Ce projet consiste en un remake complet du serveur mythique de Minecraft HiveMC, développé après sa fermeture définitive en 2021.",
+            wyrP1: "Wyrven était une étape antérieure du projet de serveur. Son développement est désormais réorienté vers Epiccoon.",
             wyrP2: "Le serveur recrée fidèlement l'expérience originale de modes emblématiques comme Survival Games, SkyWars, BedWars, Hide and Seek et Block Party, avec des statistiques complètes et des cosmétiques."
         },
         de: {
@@ -743,8 +800,8 @@
             exp3Comp: "Softwareentwicklung",
             gmipP1: "Dieses Projekt wurde als direkte Fortsetzung des berühmten Originalservers GamesMadeInPola ins Leben gerufen.",
             gmipP2: "Aufgrund unterschiedlicher Visionen und interner Probleme mit dem ursprünglichen Besitzer entschied sich das Team, die Entwicklung unabhängig fortzuführen. Wir haben uns für ein komplettes Rebranding entschieden, um das Wesen der Community zu bewahren.",
-            wyrP1: "Dieses Projekt ist ein vollständiges und detailliertes Remake des legendären Minecraft-Servers HiveMC, das nach dessen Schließung im Jahr 2021 entwickelt wurde.",
-            wyrP2: "Der Server stellt die ursprüngliche Erfahrung legendärer Modi wie Survival Games, SkyWars, BedWars, Hide and Seek und Block Party mit vollständigen Systemen originalgetreu wieder her."
+            wyrP1: "Wyrven war eine frühere Phase des Serverprojekts. Die Entwicklung wird nun in Richtung Epiccoon neu ausgerichtet.",
+            wyrP2: "Epiccoon ist das aktuelle Projekt: ein mehrsprachiges Minecraft-Netzwerk, dessen Identität und Vermächtnis hauptsächlich von OlimpoCraft inspiriert sind."
         },
         it: {
             subtitle: "Sviluppatore di Applicazioni Molteplici",
@@ -769,7 +826,7 @@
             exp3Comp: "Sviluppo Software",
             gmipP1: "Questo progetto nasce como continuazione diretta del famoso server originale GamesMadeInPola.",
             gmipP2: "A causa di divergenze di visione e problemi interni con il proprietario originale del server, il team ha deciso di assumere lo sviluppo in modo indipendente, procedendo a un rebranding completo per mantenere viva la comunità.",
-            wyrP1: "Questo progetto consiste nel remake completo del mitico server Minecraft HiveMC, sviluppato dopo la sua chiusura definitiva nel 2021.",
+            wyrP1: "Wyrven era una fase precedente del progetto server. Lo sviluppo si sta ora orientando verso Epiccoon.",
             wyrP2: "Il server ricrea fedelmente l'esperienza originale di modalità iconiche come Survival Games, SkyWars, BedWars, Hide and Seek e Block Party, implementando statistiche e cosmetici."
         },
         pt: {
@@ -795,8 +852,8 @@
             exp3Comp: "Desenvolvimento de Software",
             gmipP1: "Este projeto nasce como a continuação direta do famoso servidor original GamesMadeInPola.",
             gmipP2: "Devido a diferenças de visão e problemas internos com o proprietário original do servidor, a equipa decidiu assumir o desenvolvimento de forma independente através de um rebranding completo para manter viva a essência.",
-            wyrP1: "Este projeto consiste no remake completo do mítico servidor de Minecraft HiveMC, developed após o seu encerramento em 2021.",
-            wyrP2: "O servidor recria fielmente a experiência original de modalidades emblemáticas como Survival Games, SkyWars, BedWars, Hide and Seek e Block Party, com sistemas de estatísticas."
+            wyrP1: "Wyrven foi uma etapa anterior do projeto de servidor. O desenvolvimento está agora a ser redirecionado para Epiccoon.",
+            wyrP2: "Epiccoon é o projeto atual: uma rede Minecraft multilingue cuja identidade e legado principal se inspiram em OlimpoCraft."
         },
         ru: {
             subtitle: "Разработчик кроссплатформенных приложений",
@@ -821,8 +878,8 @@
             exp3Comp: "Разработка ПО",
             gmipP1: "Этот проект родился как прямое продолжение известного оригинального сервера GamesMadeInPola.",
             gmipP2: "Из-за разногласий в видении и внутренних проблем с первоначальным владельцем сервера команда решила взять разработку в свои руки. Мы провели полный ребрендинг, сохранив дух сообщества.",
-            wyrP1: "Этот проект представляет собой полный ремейк легендарного Майнкрафт-сервера HiveMC, созданный после его закрытия в 2021 году.",
-            wyrP2: "Сервер воссоздает оригинальный опыт культовых режимов, таких как Survival Games, SkyWars, BedWars, Hide and Seek и Block Party, со статистикой и косметикой."
+            wyrP1: "Wyrven был предыдущим этапом проекта сервера. Теперь разработка переориентируется на Epiccoon.",
+            wyrP2: "Epiccoon — текущий проект: многоязычная сеть Minecraft, чья основная идентичность и наследие вдохновлены OlimpoCraft."
         },
         zh: {
             subtitle: "跨平台应用开发专业学生",
@@ -847,8 +904,8 @@
             exp3Comp: "软件开发",
             gmipP1: "该项目是著名的原版 GamesMadeInPola 服务器的直接延续。",
             gmipP2: "由于与服务器原拥有者在愿景上的分歧和内部问题，团队决定独立接管开发。我们选择通过彻底的品牌重塑来推进项目，以全新的架构确保社区的活力。",
-            wyrP1: "该项目是对传奇 Minecraft 服务器 HiveMC 在 2021 年停服后的完整重制。",
-            wyrP2: "服务器完美还原了 Survival Games、SkyWars、BedWars、Hide and Seek 和 Block Party 等经典玩法的原汁原味体验。"
+            wyrP1: "Wyrven 是服务器项目的早期阶段，开发方向现正转向 Epiccoon。",
+            wyrP2: "Epiccoon 是当前项目：一个多语言 Minecraft 网络，其主要身份与传承受到 OlimpoCraft 启发。"
         },
         ja: {
             subtitle: "マルチプラットフォームアプリ開発者",
@@ -873,8 +930,8 @@
             exp3Comp: "ソフトウェア開発",
             gmipP1: "このプロジェクトは、有名なオリジナルサーバー GamesMadeInPola の直接の後継として誕生しました。",
             gmipP2: "元のサーバー所有者との方針の違いや内部的な問題により、チームは独立して開発を継続することを決断しました。完全なリブランディングを行い、コミュニティの魂を守っています。",
-            wyrP1: "このプロジェクトは、2021年に閉鎖された伝説的なMinecraftサーバー「HiveMC」の完全なリメイクです。",
-            wyrP2: "Survival Games、SkyWars、BedWars、Hide and Seek、Block Partyなどの象徴的なモードを、統計やコスメシステムを含めて忠実に再現しています。"
+            wyrP1: "Wyrvenはサーバープロジェクトの以前の段階で、現在はEpiccoonへと開発方針を移行しています。",
+            wyrP2: "Epiccoonは現在のプロジェクトです。OlimpoCraftの伝統に着想を得た、多言語対応のMinecraftネットワークです。"
         },
         ar: {
             subtitle: "مطوّر تطبيقات منصات متعددة",
@@ -899,8 +956,8 @@
             exp3Comp: "تطوير البرمجيات",
             gmipP1: "ولد هذا المشروع كامتداد مباشر لخادم GamesMadeInPola الأصلي الشهير.",
             gmipP2: "بسبب الاختلافات في الرؤية والمشاكل الداخلية مع المالك الأصلي للخادم، قرر الفريق تولي التطوير بشكل مستقل. اخترنا المضي قدماً من خلال إعادة تسمية العلامة التجارية بالكامل لضمان بقاء جوهر المجتمع حياً.",
-            wyrP1: "هذا المشروع عبارة عن إعادة صياغة كاملة وتفصيلية لخادم ماينكرافت الأسطوري HiveMC، والذي تم تطويره بعد إغلاقه نهائياً في عام 2021.",
-            wyrP2: "يعيد الخادم بصدق وبطابع كلاسيكي التجربة الأصلية لأنماط الألعاب الشهيرة مثل Survival Games وSkyWars وBedWars وHide and Seek وBlock Party، مع أنظمة إحصاءات كاملة."
+            wyrP1: "كان Wyrven مرحلة سابقة من مشروع الخادم، ويجري الآن توجيه التطوير نحو Epiccoon.",
+            wyrP2: "Epiccoon هو المشروع الحالي: شبكة Minecraft متعددة اللغات تستلهم هويتها وإرثها الأساسي من OlimpoCraft."
         }
     };
 
